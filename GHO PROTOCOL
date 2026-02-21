@@ -46,14 +46,15 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 5%;
+    padding: 0.5rem 5%;
     position: fixed;
     width: 100%;
-    top: 0;
-    z-index: 1000;
+    top: 30px; /* Positioned below status bar */
+    z-index: 10000;
     backdrop-filter: blur(15px);
-    background: rgba(11, 11, 13, 0.7);
+    background: rgba(11, 11, 13, 0.85);
     border-bottom: 1px solid rgba(255, 0, 0, 0.1);
+    height: 70px;
 }
 
 /* Mobile Menu Toggle */
@@ -819,20 +820,21 @@ footer {
 /* Global Command Center & Status Bar */
 #status-bar {
     position: fixed;
-    top: 3px; /* Just below scroll progress */
+    top: 0;
     left: 0;
     width: 100%;
-    background: rgba(255, 0, 0, 0.05);
-    border-bottom: 1px solid rgba(255, 0, 0, 0.1);
-    padding: 5px 5%;
+    background: rgba(0, 0, 0, 0.95);
+    border-bottom: 1px solid rgba(255, 0, 0, 0.2);
+    padding: 0 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 0.6rem;
     letter-spacing: 2px;
-    z-index: 10000;
-    backdrop-filter: blur(5px);
-    color: rgba(255, 255, 255, 0.5);
+    z-index: 10001;
+    backdrop-filter: blur(10px);
+    color: rgba(255, 255, 255, 0.7);
+    height: 30px;
 }
 
 .status-links {
@@ -1048,24 +1050,27 @@ footer {
 @media (max-width: 480px) {
     #status-bar {
         font-size: 0.55rem;
-        padding: 8px 4%;
-        flex-direction: column;
-        gap: 6px;
-        height: auto;
-        background: rgba(0, 0, 0, 0.9);
+        padding: 0 4%;
+        flex-direction: row; /* Keep row to save vertical space */
+        gap: 0;
+        height: 30px;
+        background: rgba(0, 0, 0, 1.0);
     }
     
     .status-links {
-        gap: 1.2rem;
-        width: 100%;
-        justify-content: center;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
-        padding-top: 5px;
+        gap: 0.8rem;
+        width: auto;
+        justify-content: flex-end;
+        border-top: none;
+        padding-top: 0;
     }
 
-    .hero-content h1 {
-        font-size: 1.8rem;
+    nav {
+        height: 60px;
+        top: 30px;
     }
+
+    .hero { padding-top: 6rem; }
     
     .terminal-body {
         font-size: 0.75rem;
