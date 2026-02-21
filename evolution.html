@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evolution | GHO$T PROTOCOL</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="scanline"></div>
+    <div id="scroll-progress"></div>
+
+    <div id="status-bar">
+        <div class="status-info">
+            <span class="pulse-dot"></span> UPLINK: <span id="uplink-id">CONNECTED</span> | LATENCY: <span id="uplink-ms">12ms</span>
+        </div>
+        <div class="status-links">
+            <a href="https://discord.gg/76DrrcEU" target="_blank">DISCORD</a>
+            <a href="https://t.me/GHOSTX_777" target="_blank">TELEGRAM</a>
+        </div>
+    </div>
+
+    <div id="command-center">
+        <div class="cc-menu" id="cc-menu">
+            <div class="cc-header" style="color: var(--accent-color); font-size: 0.6rem; margin-bottom: 0.5rem; letter-spacing: 2px;">SECURE UPLINK</div>
+            <a href="https://discord.gg/76DrrcEU" target="_blank" class="cc-item">
+                Discord <span class="tag">DC</span>
+            </a>
+            <a href="https://t.me/GHOSTX_777" target="_blank" class="cc-item">
+                Telegram <span class="tag">TG</span>
+            </a>
+            <a href="index.html#chart" class="cc-item">
+                Analysis <span class="tag">VIEW</span>
+            </a>
+        </div>
+        <div class="cc-toggle" id="cc-toggle">G</div>
+    </div>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <nav>
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 1.5rem;">
+                <img src="images/logo.png" alt="GHO$T" class="logo-img">
+                <span class="logo-text glitch-small" data-text="GHO$T">GHO$T</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="specs.html">Specs</a></li>
+            <li><a href="evolution.html" class="active-nav">Evolution</a></li>
+            <li><a href="community.html">Community</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero-small">
+        <div class="container">
+            <h1 class="glitch" data-text="THE EVOLUTION">THE EVOLUTION</h1>
+            <p class="subtitle">The timeline of protocol singularity.</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="countdown-section reveal">
+            <div class="container">
+                <h2>Singularity Event</h2>
+                <div class="countdown-timer" id="countdown">
+                    <!-- JS will populate this -->
+                </div>
+            </div>
+        </section>
+
+        <section class="roadmap-deep reveal">
+            <div class="container">
+                <div class="roadmap-timeline">
+                    <div class="timeline-item past">
+                        <div class="timeline-content">
+                            <span class="phase">Phase 01: Genesis</span>
+                            <h3>Protocol Inception</h3>
+                            <p>Development of the core signal architecture and initial community onboarding via Discord and Telegram.</p>
+                            <span class="status">COMPLETED [100%]</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item current">
+                        <div class="timeline-content">
+                            <span class="phase">Phase 02: Expansion</span>
+                            <h3>Node Distribution</h3>
+                            <p>Scaling node infrastructure across multi-chain environments (Solana, Ethereum, Base) and launching the Private Dashboard beta.</p>
+                            <span class="status">IN PROGRESS [65%]</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item future">
+                        <div class="timeline-content">
+                            <span class="phase">Phase 03: Singularity</span>
+                            <h3>DAO Governance</h3>
+                            <p>Transitioning the protocol to a decentralized autonomous organization. GHO$T DAO will control liquidity pools and signal parameters.</p>
+                            <span class="status">QUEUED</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item future">
+                        <div class="timeline-content">
+                            <span class="phase">Phase 04: The Void</span>
+                            <h3>Self-Healing Alpha</h3>
+                            <p>Introduction of neural network nodes that autonomously adjust strategies based on real-time macro-economic volatility.</p>
+                            <span class="status">FUTURE HORIZON</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="objective-card reveal">
+                    <h3>CURRENT OBJECTIVE: [DASHBOARD_V1]</h3>
+                    <div class="progress-container">
+                        <div class="progress-info">
+                            <span>Deploying Private API Endpoints</span>
+                            <span>82%</span>
+                        </div>
+                        <div class="progress-bar-wrap">
+                            <div class="progress-bar-fill" style="width: 82%;"></div>
+                        </div>
+                    </div>
+                    <ul class="obj-list">
+                        <li>√ - Secure WebSocket Layer</li>
+                        <li>√ - Multi-Chain Bridge Testing</li>
+                        <li>> - UI/UX Final Encryption</li>
+                    </ul>
+                </div>
+
+                <div class="evolution-focus">
+                    <div class="focus-card">
+                        <div class="f-icon">⛓️</div>
+                        <h4>Cross-Chain</h4>
+                        <p>Bridging liquidity across 7 major networks.</p>
+                    </div>
+                    <div class="focus-card">
+                        <div class="f-icon">🧠</div>
+                        <h4>AI Logic</h4>
+                        <p>Training neural nodes on historical volatility.</p>
+                    </div>
+                    <div class="focus-card">
+                        <div class="f-icon">🛡️</div>
+                        <h4>Hardened Sec</h4>
+                        <p>Implementing ZK-Proofs for signal privacy.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">GHO$T PROTOCOL</div>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="specs.html">Specs</a>
+                    <a href="community.html">Community</a>
+                </div>
+            </div>
+            <p class="copyright">&copy; 2026 GHO$T PROTOCOL. All rights reserved. Transmission terminated.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

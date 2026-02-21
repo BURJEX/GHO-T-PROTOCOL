@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community | GHO$T PROTOCOL</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="scanline"></div>
+    <div id="scroll-progress"></div>
+
+    <div id="status-bar">
+        <div class="status-info">
+            <span class="pulse-dot"></span> UPLINK: <span id="uplink-id">CONNECTED</span> | LATENCY: <span id="uplink-ms">12ms</span>
+        </div>
+        <div class="status-links">
+            <a href="https://discord.gg/76DrrcEU" target="_blank">DISCORD</a>
+            <a href="https://t.me/GHOSTX_777" target="_blank">TELEGRAM</a>
+        </div>
+    </div>
+
+    <div id="command-center">
+        <div class="cc-menu" id="cc-menu">
+            <div class="cc-header" style="color: var(--accent-color); font-size: 0.6rem; margin-bottom: 0.5rem; letter-spacing: 2px;">SECURE UPLINK</div>
+            <a href="https://discord.gg/76DrrcEU" target="_blank" class="cc-item">
+                Discord <span class="tag">DC</span>
+            </a>
+            <a href="https://t.me/GHOSTX_777" target="_blank" class="cc-item">
+                Telegram <span class="tag">TG</span>
+            </a>
+            <a href="index.html#chart" class="cc-item">
+                Analysis <span class="tag">VIEW</span>
+            </a>
+        </div>
+        <div class="cc-toggle" id="cc-toggle">G</div>
+    </div>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <nav>
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 1.5rem;">
+                <img src="images/logo.png" alt="GHO$T" class="logo-img">
+                <span class="logo-text glitch-small" data-text="GHO$T">GHO$T</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="specs.html">Specs</a></li>
+            <li><a href="evolution.html">Evolution</a></li>
+            <li><a href="community.html" class="active-nav">Community</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero-small">
+        <div class="container">
+            <h1 class="glitch" data-text="THE NETWORK">THE NETWORK</h1>
+            <p class="subtitle">Join the collective. Influence the void.</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="access-terminal reveal">
+            <div class="container">
+                <h2>Node Access Check</h2>
+                <div class="input-terminal">
+                    <input type="text" id="wallet-input" placeholder="ENTER_WALLET_ADDRESS [0x...]">
+                    <button class="btn primary" onclick="verifyWallet()">VERIFY</button>
+                    <div id="access-output" class="terminal-response"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="social-deep reveal">
+            <div class="container">
+                <div class="social-grid">
+                    <div class="social-main">
+                        <h2>The Headquarters</h2>
+                        <div class="hq-card">
+                            <div class="hq-icon dc">DC</div>
+                            <div class="hq-info">
+                                <h3>Official Discord</h3>
+                                <p>Where the high-level strategy happens. Weekly calls, real-time alerts, and direct developer access.</p>
+                                <a href="https://discord.gg/76DrrcEU" target="_blank" class="btn primary">Secure Entry</a>
+                            </div>
+                        </div>
+                        <div class="hq-card">
+                            <div class="hq-icon tg">TG</div>
+                            <div class="hq-info">
+                                <h3>Telegram Intel</h3>
+                                <p>Fast-moving signals and breaking market sentiment updates for traders on the move.</p>
+                                <a href="https://t.me/GHOSTX_777" target="_blank" class="btn primary">Join Channel</a>
+                            </div>
+                        </div>
+
+                        <div class="transmission-feed">
+                            <h3>Recent Transmissions</h3>
+                            <div class="feed-container" id="community-feed">
+                                <div class="feed-item">
+                                    <span class="f-user">SYSTEM:</span> [SOL/USDT] Breakout confirmed. Entry: 142.50.
+                                </div>
+                                <div class="feed-item">
+                                    <span class="f-user">MOD_01:</span> Welcome 42 new GHO$T nodes to the protocol.
+                                </div>
+                                <div class="feed-item">
+                                    <span class="f-user">ALPHA:</span> The void is calling. New trade set uploaded.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-sidebar">
+                        <div class="sidebar-card">
+                            <h3>Network Stats</h3>
+                            <div class="side-stat">
+                                <span class="label">Members</span>
+                                <span class="val">12,482</span>
+                            </div>
+                            <div class="side-stat">
+                                <span class="label">Daily Active</span>
+                                <span class="val">2,109</span>
+                            </div>
+                            <div class="side-stat">
+                                <span class="label">Verified Nodes</span>
+                                <span class="val">777</span>
+                            </div>
+                        </div>
+
+                        <div class="tiers-card sidebar-card">
+                            <h3>Access Tiers</h3>
+                            <div class="tier-item">
+                                <h4>TIER-01: GHOST</h4>
+                                <ul class="tier-list">
+                                    <li>Real-time Signals</li>
+                                    <li>Community Chat</li>
+                                </ul>
+                            </div>
+                            <div class="tier-item active">
+                                <h4>TIER-02: PHANTOM</h4>
+                                <ul class="tier-list">
+                                    <li>Priority Alerts</li>
+                                    <li>Advanced Dashboard</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-card announcement">
+                            <h3>Last Broadcast</h3>
+                            <p class="ann-text">"The weekly GHO$T call starts in 2 hours. Strategy: SOL-Breakout."</p>
+                            <span class="time">14:20 UTC</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">GHO$T PROTOCOL</div>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="specs.html">Specs</a>
+                    <a href="community.html">Community</a>
+                </div>
+            </div>
+            <p class="copyright">&copy; 2026 GHO$T PROTOCOL. All rights reserved. Transmission terminated.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
