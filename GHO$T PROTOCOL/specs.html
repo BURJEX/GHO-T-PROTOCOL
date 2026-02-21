@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specs | GHO$T PROTOCOL</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="scanline"></div>
+    <div id="scroll-progress"></div>
+
+    <div id="status-bar">
+        <div class="status-info">
+            <span class="pulse-dot"></span> UPLINK: <span id="uplink-id">CONNECTED</span> | LATENCY: <span id="uplink-ms">12ms</span>
+        </div>
+        <div class="status-links">
+            <a href="https://discord.gg/76DrrcEU" target="_blank">DISCORD</a>
+            <a href="https://t.me/GHOSTX_777" target="_blank">TELEGRAM</a>
+        </div>
+    </div>
+
+    <div id="command-center">
+        <div class="cc-menu" id="cc-menu">
+            <div class="cc-header" style="color: var(--accent-color); font-size: 0.6rem; margin-bottom: 0.5rem; letter-spacing: 2px;">SECURE UPLINK</div>
+            <a href="https://discord.gg/76DrrcEU" target="_blank" class="cc-item">
+                Discord <span class="tag">DC</span>
+            </a>
+            <a href="https://t.me/GHOSTX_777" target="_blank" class="cc-item">
+                Telegram <span class="tag">TG</span>
+            </a>
+            <a href="index.html#chart" class="cc-item">
+                Analysis <span class="tag">VIEW</span>
+            </a>
+        </div>
+        <div class="cc-toggle" id="cc-toggle">G</div>
+    </div>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <nav>
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 1.5rem;">
+                <img src="images/logo.png" alt="GHO$T" class="logo-img">
+                <span class="logo-text glitch-small" data-text="GHO$T">GHO$T</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="specs.html" class="active-nav">Specs</a></li>
+            <li><a href="evolution.html">Evolution</a></li>
+            <li><a href="community.html">Community</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero-small">
+        <div class="container">
+            <h1 class="glitch" data-text="THE SPECIFICATIONS">THE SPECIFICATIONS</h1>
+            <p class="subtitle">Deep-dive into the technical core.</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="hex-section reveal">
+            <div class="container">
+                <h2>Raw Data Stream</h2>
+                <div class="hex-monitor" id="hex-stream">
+                    <!-- JS will populate this with hex codes -->
+                </div>
+            </div>
+        </section>
+
+        <section class="specs-deep reveal">
+            <div class="container">
+                <div class="specs-grid">
+                    <div class="spec-card-full">
+                        <div class="spec-label">LATENCY MONITORING</div>
+                        <h3>Network Architecture</h3>
+                        <p>Our infrastructure is built on distributed low-latency nodes positioned globally to minimize propagation time.</p>
+                        <div class="latency-grid">
+                            <div class="latency-item">
+                                <span class="loc">NY4 (New York)</span>
+                                <span class="ms">1.2ms</span>
+                                <div class="ping-bar"><div class="fill" style="width: 95%;"></div></div>
+                            </div>
+                            <div class="latency-item">
+                                <span class="loc">LD4 (London)</span>
+                                <span class="ms">2.4ms</span>
+                                <div class="ping-bar"><div class="fill" style="width: 85%;"></div></div>
+                            </div>
+                            <div class="latency-item">
+                                <span class="loc">TY3 (Tokyo)</span>
+                                <span class="ms">4.1ms</span>
+                                <div class="ping-bar"><div class="fill" style="width: 70%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="node-monitor-card spec-card-full">
+                        <div class="spec-label">SYSTEM HEALTH</div>
+                        <h3>Node Monitor</h3>
+                        <div class="monitor-grid">
+                            <div class="m-item">CPU: <span class="m-val">12.4%</span></div>
+                            <div class="m-item">RAM: <span class="m-val">4.2GB / 64GB</span></div>
+                            <div class="m-item">BANDWIDTH: <span class="m-val">842MB/s</span></div>
+                            <div class="m-item">NODES: <span class="m-val pos">777 ACTIVE</span></div>
+                        </div>
+                        <div class="live-bars">
+                            <div class="bar-row"><div class="bar-fill" style="width: 40%; animation: bar-grow 2s infinite alternate;"></div></div>
+                            <div class="bar-row"><div class="bar-fill" style="width: 70%; animation: bar-grow 3s infinite alternate-reverse;"></div></div>
+                            <div class="bar-row"><div class="bar-fill" style="width: 20%; animation: bar-grow 1.5s infinite alternate;"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="spec-card">
+                        <div class="spec-icon">🛡️</div>
+                        <h3>Security Protocol</h3>
+                        <p>End-to-end encryption with AES-256 and multi-sig authorization for all protocol interactions.</p>
+                        <ul class="spec-list">
+                            <li>Multi-sig Governance</li>
+                            <li>Hardware Key Integration</li>
+                            <li>Zero-Knowledge Proofs</li>
+                        </ul>
+                    </div>
+
+                    <div class="spec-card">
+                        <div class="spec-icon">⚡</div>
+                        <h3>Execution Engine</h3>
+                        <p>Proprietary engine built on Go/Rust for maximum concurrency and thread safety during high-volatility events.</p>
+                        <ul class="spec-list">
+                            <li>10,000+ Transactions Per Second</li>
+                            <li>Sub-Millisecond Tick Processing</li>
+                            <li>DEX Direct Liquidity Access</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">GHO$T PROTOCOL</div>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="specs.html">Specs</a>
+                    <a href="community.html">Community</a>
+                </div>
+            </div>
+            <p class="copyright">&copy; 2026 GHO$T PROTOCOL. All rights reserved. Transmission terminated.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
