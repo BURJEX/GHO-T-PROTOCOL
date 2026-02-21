@@ -57,7 +57,7 @@ if (canvas) {
 
     class FloatingSymbol {
         constructor() {
-            this.symbols = ['$', '👻', '📈', '📉', '💰', '💸', '📊'];
+            this.symbols = ['$', '👻', '📈', '📉', '💰', '💸', '📊', '₿', 'Ξ', '◈', '⚖️', '⛓️', '🏦', '💎', 'GHO$T', 'TRADING', 'BUY', 'SELL', 'PROFIT', '0x777', 'VOID'];
             this.init();
         }
 
@@ -65,12 +65,15 @@ if (canvas) {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
             this.symbol = this.symbols[Math.floor(Math.random() * this.symbols.length)];
-            this.size = Math.random() * 15 + 10;
-            this.speedX = Math.random() * 1 - 0.5;
-            this.speedY = Math.random() * 1 - 0.5;
+            this.isText = this.symbol.length > 2;
+            this.size = this.isText ? Math.random() * 15 + 10 : Math.random() * 25 + 15;
+            this.speedX = Math.random() * 1.2 - 0.6;
+            this.speedY = Math.random() * 1.2 - 0.6;
             this.opacity = Math.random() * 0.3 + 0.1;
             this.rotation = Math.random() * Math.PI * 2;
             this.rotationSpeed = Math.random() * 0.02 - 0.01;
+            this.fadeSpeed = Math.random() * 0.005 + 0.002;
+            this.fadeDir = 1;
         }
 
         update() {
@@ -78,22 +81,171 @@ if (canvas) {
             this.y += this.speedY;
             this.rotation += this.rotationSpeed;
 
-            if (this.x > canvas.width + 50) this.x = -50;
-            if (this.x < -50) this.x = canvas.width + 50;
-            if (this.y > canvas.height + 50) this.y = -50;
-            if (this.y < -50) this.y = canvas.height + 50;
+            // Pulsing opacity
+            this.opacity += this.fadeSpeed * this.fadeDir;
+            if (this.opacity > 0.4 || this.opacity < 0.05) this.fadeDir *= -1;
+
+            if (this.x > canvas.width + 100) this.x = -100;
+            if (this.x < -100) this.x = canvas.width + 100;
+            if (this.y > canvas.height + 100) this.y = -100;
+            if (this.y < -100) this.y = canvas.height + 100;
         }
 
         draw() {
             ctx.save();
             ctx.translate(this.x, this.y);
             ctx.rotate(this.rotation);
-            ctx.font = `${this.size}px serif`;
-            ctx.fillStyle = `rgba(255, 0, 0, ${this.opacity})`;
+            ctx.font = `${this.isText ? 'bold ' : ''}${this.size}px ${this.isText ? 'Space Grotesk' : 'serif'}`;
+            
+            const r = 255;
+            const g = this.isText ? 0 : Math.floor(Math.random() * 30);
+            const b = this.isText ? 0 : Math.floor(Math.random() * 30);
+            
+            ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${this.opacity})`;
+            if (this.isText) {
+                ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${this.opacity * 0.5})`;
+                ctx.lineWidth = 1;
+                ctx.strokeText(this.symbol, 0, 0);
+            }
+            
+            ctx.shadowBlur = this.isText ? 12 : 5;
+            ctx.shadowColor = `rgba(255, 0, 0, 0.5)`;
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             ctx.fillText(this.symbol, 0, 0);
             ctx.restore();
+        }
+    }
+
+    class DataStream {
+        constructor() {
+            this.init();
+        }
+
+        init() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.chars = '01GHOST$#%&*';
+            this.length = Math.floor(Math.random() * 10) + 5;
+            this.speed = Math.random() * 2 + 1;
+            this.opacity = Math.random() * 0.15 + 0.05;
+        }
+
+        update() {
+            this.y += this.speed;
+            if (this.y > canvas.height) {
+                this.y = -20;
+                this.x = Math.random() * canvas.width;
+            }
+        }
+
+        draw() {
+            ctx.font = '10px monospace';
+            ctx.fillStyle = `rgba(255, 0, 0, ${this.opacity})`;
+            for(let i = 0; i < this.length; i++) {
+                const char = this.chars[Math.floor(Math.random() * this.chars.length)];
+                ctx.fillText(char, this.x, this.y - (i * 12));
+            }
+        }
+    }
+
+    class TradingLine {
+        constructor() {
+            this.init();
+        }
+
+        init() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.points = [];
+            this.length = Math.floor(Math.random() * 15) + 8;
+            this.opacity = Math.random() * 0.2 + 0.05;
+            this.speed = Math.random() * 2.5 + 1.5;
+            
+            for(let i = 0; i < this.length; i++) {
+                this.points.push({
+                    x: this.x - (i * 25),
+                    y: this.y + (Math.random() * 60 - 30)
+                });
+            }
+        }
+
+        update() {
+            this.x += this.speed;
+            
+            // Shift points
+            for(let i = this.points.length - 1; i > 0; i--) {
+                this.points[i].x = this.points[i-1].x;
+                this.points[i].y = this.points[i-1].y;
+            }
+            
+            this.points[0].x = this.x;
+            this.points[0].y += (Math.random() * 12 - 6);
+
+            if (this.x > canvas.width + (this.length * 25)) {
+                this.init();
+                this.x = -(this.length * 25);
+            }
+        }
+
+        draw() {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(255, 0, 0, ${this.opacity})`;
+            ctx.lineWidth = 1.5;
+            ctx.lineJoin = 'round';
+            ctx.moveTo(this.points[0].x, this.points[0].y);
+            for(let i = 1; i < this.points.length; i++) {
+                ctx.lineTo(this.points[i].x, this.points[i].y);
+            }
+            ctx.stroke();
+
+            // Glow effect for the current "price" point
+            ctx.beginPath();
+            ctx.arc(this.points[0].x, this.points[0].y, 2, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255, 0, 0, ${this.opacity * 2})`;
+            ctx.shadowBlur = 5;
+            ctx.shadowColor = 'red';
+            ctx.fill();
+        }
+    }
+
+    class Candlestick {
+        constructor() {
+            this.init();
+        }
+
+        init() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.w = 12;
+            this.h = Math.random() * 40 + 10;
+            this.wick = Math.random() * 20 + 5;
+            this.isGreen = Math.random() > 0.5;
+            this.speed = Math.random() * 0.8 + 0.2;
+            this.opacity = Math.random() * 0.2 + 0.05;
+        }
+
+        update() {
+            this.x -= this.speed;
+            if (this.x < -20) {
+                this.x = canvas.width + 20;
+                this.y = Math.random() * canvas.height;
+            }
+        }
+
+        draw() {
+            const color = this.isGreen ? 'rgba(0, 255, 136, ' : 'rgba(255, 0, 0, ';
+            ctx.fillStyle = color + this.opacity + ')';
+            ctx.strokeStyle = color + this.opacity + ')';
+            
+            // Body
+            ctx.fillRect(this.x - this.w/2, this.y - this.h/2, this.w, this.h);
+            
+            // Wick
+            ctx.beginPath();
+            ctx.moveTo(this.x, this.y - this.h/2 - this.wick);
+            ctx.lineTo(this.x, this.y + this.h/2 + this.wick);
+            ctx.stroke();
         }
     }
 
@@ -102,9 +254,27 @@ if (canvas) {
     }
 
     let floatingSymbols = [];
-    const symbolCount = 60;
+    const symbolCount = 50;
     for (let i = 0; i < symbolCount; i++) {
         floatingSymbols.push(new FloatingSymbol());
+    }
+
+    let tradingLines = [];
+    const lineCount = 15;
+    for (let i = 0; i < lineCount; i++) {
+        tradingLines.push(new TradingLine());
+    }
+
+    let dataStreams = [];
+    const streamCount = 20;
+    for (let i = 0; i < streamCount; i++) {
+        dataStreams.push(new DataStream());
+    }
+
+    let candlesticks = [];
+    const candleCount = 25;
+    for (let i = 0; i < candleCount; i++) {
+        candlesticks.push(new Candlestick());
     }
 
     function animate() {
@@ -123,6 +293,21 @@ if (canvas) {
         particles.forEach(p => {
             p.update();
             p.draw();
+        });
+
+        candlesticks.forEach(c => {
+            c.update();
+            c.draw();
+        });
+
+        dataStreams.forEach(d => {
+            d.update();
+            d.draw();
+        });
+
+        tradingLines.forEach(l => {
+            l.update();
+            l.draw();
         });
 
         floatingSymbols.forEach(s => {
