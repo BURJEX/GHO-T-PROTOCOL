@@ -57,7 +57,7 @@ if (canvas) {
 
     class FloatingSymbol {
         constructor() {
-            this.symbols = ['$', '👻', '📈', '📉', '💰', '💸', '📊'];
+            this.symbols = ['$', '👻', '📈', '📉', '💰', '💸', '📊', '₿', 'Ξ', '◈', '⚖️', '⛓️', '🏦', '💎'];
             this.init();
         }
 
@@ -65,12 +65,12 @@ if (canvas) {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
             this.symbol = this.symbols[Math.floor(Math.random() * this.symbols.length)];
-            this.size = Math.random() * 15 + 10;
-            this.speedX = Math.random() * 1 - 0.5;
-            this.speedY = Math.random() * 1 - 0.5;
-            this.opacity = Math.random() * 0.3 + 0.1;
+            this.size = Math.random() * 25 + 15;
+            this.speedX = Math.random() * 1.5 - 0.75;
+            this.speedY = Math.random() * 1.5 - 0.75;
+            this.opacity = Math.random() * 0.4 + 0.15;
             this.rotation = Math.random() * Math.PI * 2;
-            this.rotationSpeed = Math.random() * 0.02 - 0.01;
+            this.rotationSpeed = Math.random() * 0.04 - 0.02;
         }
 
         update() {
@@ -89,11 +89,77 @@ if (canvas) {
             ctx.translate(this.x, this.y);
             ctx.rotate(this.rotation);
             ctx.font = `${this.size}px serif`;
-            ctx.fillStyle = `rgba(255, 0, 0, ${this.opacity})`;
+            // Subtle color variation within the red theme
+            const r = 255;
+            const g = Math.floor(Math.random() * 50);
+            const b = Math.floor(Math.random() * 50);
+            ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${this.opacity})`;
+            ctx.shadowBlur = 8;
+            ctx.shadowColor = `rgba(${r}, 0, 0, 0.6)`;
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             ctx.fillText(this.symbol, 0, 0);
             ctx.restore();
+        }
+    }
+
+    class TradingLine {
+        constructor() {
+            this.init();
+        }
+
+        init() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.points = [];
+            this.length = Math.floor(Math.random() * 15) + 8;
+            this.opacity = Math.random() * 0.2 + 0.05;
+            this.speed = Math.random() * 2.5 + 1.5;
+            
+            for(let i = 0; i < this.length; i++) {
+                this.points.push({
+                    x: this.x - (i * 25),
+                    y: this.y + (Math.random() * 60 - 30)
+                });
+            }
+        }
+
+        update() {
+            this.x += this.speed;
+            
+            // Shift points
+            for(let i = this.points.length - 1; i > 0; i--) {
+                this.points[i].x = this.points[i-1].x;
+                this.points[i].y = this.points[i-1].y;
+            }
+            
+            this.points[0].x = this.x;
+            this.points[0].y += (Math.random() * 12 - 6);
+
+            if (this.x > canvas.width + (this.length * 25)) {
+                this.init();
+                this.x = -(this.length * 25);
+            }
+        }
+
+        draw() {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(255, 0, 0, ${this.opacity})`;
+            ctx.lineWidth = 1.5;
+            ctx.lineJoin = 'round';
+            ctx.moveTo(this.points[0].x, this.points[0].y);
+            for(let i = 1; i < this.points.length; i++) {
+                ctx.lineTo(this.points[i].x, this.points[i].y);
+            }
+            ctx.stroke();
+
+            // Glow effect for the current "price" point
+            ctx.beginPath();
+            ctx.arc(this.points[0].x, this.points[0].y, 2, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255, 0, 0, ${this.opacity * 2})`;
+            ctx.shadowBlur = 5;
+            ctx.shadowColor = 'red';
+            ctx.fill();
         }
     }
 
@@ -102,9 +168,15 @@ if (canvas) {
     }
 
     let floatingSymbols = [];
-    const symbolCount = 60;
+    const symbolCount = 40;
     for (let i = 0; i < symbolCount; i++) {
         floatingSymbols.push(new FloatingSymbol());
+    }
+
+    let tradingLines = [];
+    const lineCount = 15;
+    for (let i = 0; i < lineCount; i++) {
+        tradingLines.push(new TradingLine());
     }
 
     function animate() {
@@ -123,6 +195,11 @@ if (canvas) {
         particles.forEach(p => {
             p.update();
             p.draw();
+        });
+
+        tradingLines.forEach(l => {
+            l.update();
+            l.draw();
         });
 
         floatingSymbols.forEach(s => {
