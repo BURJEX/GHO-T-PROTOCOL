@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GHO$T | Crypto Trader & Community</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="cursor-glow"></div>
+    <div id="scanline"></div>
+    <div id="scroll-progress"></div>
+
+    <div id="status-bar">
+        <div class="status-info">
+            <span class="pulse-dot"></span> UPLINK: <span id="uplink-id">CONNECTED</span> | LATENCY: <span id="uplink-ms">12ms</span>
+        </div>
+        <div class="status-links">
+            <a href="https://discord.gg/76DrrcEU" target="_blank">DISCORD</a>
+            <a href="https://t.me/GHOSTX_777" target="_blank">TELEGRAM</a>
+        </div>
+    </div>
+
+    <div id="command-center">
+        <div class="cc-menu" id="cc-menu">
+            <div class="cc-header" style="color: var(--accent-color); font-size: 0.6rem; margin-bottom: 0.5rem; letter-spacing: 2px;">SECURE UPLINK</div>
+            <a href="https://discord.gg/76DrrcEU" target="_blank" class="cc-item">
+                Discord <span class="tag">DC</span>
+            </a>
+            <a href="https://t.me/GHOSTX_777" target="_blank" class="cc-item">
+                Telegram <span class="tag">TG</span>
+            </a>
+            <a href="#chart" class="cc-item">
+                Analysis <span class="tag">VIEW</span>
+            </a>
+        </div>
+        <div class="cc-toggle" id="cc-toggle">G</div>
+    </div>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <nav>
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 1.5rem;">
+                <img src="images/logo.png" alt="GHO$T" class="logo-img">
+                <span class="logo-text glitch-small" data-text="GHO$T">GHO$T</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active-nav">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="specs.html">Specs</a></li>
+            <li><a href="evolution.html">Evolution</a></li>
+            <li><a href="community.html">Community</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">STABILIZING CONNECTION...</div>
+            <h1 class="glitch" data-text="GHO$T PROTOCOL">GHO$T PROTOCOL</h1>
+            <p class="subtitle">Navigating the digital void. Trading with precision.</p>
+            
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                    <span class="terminal-title">TERMINAL: /dev/ghost_node/</span>
+                </div>
+                <div class="terminal-body" id="terminal-output">
+                    <div class="line">> INITIALIZING PROTOCOL...</div>
+                    <div class="line">> SCANNING BLOCKCHAIN...</div>
+                    <div class="line">> ENCRYPTION ACTIVE [AES-256]</div>
+                    <div class="line">> NODE CONNECTED: 0x777...GHO$T</div>
+                </div>
+            </div>
+
+            <div class="cta-group">
+                <a href="community.html" class="btn primary">Join Community</a>
+                <a href="#chart" class="btn secondary">Analyze Markets</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="stats" class="stats-section reveal">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-label">Total Trades</span>
+                    <span class="stat-value" data-target="12842">0</span>
+                    <span class="stat-trend pos">+4.2%</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Win Rate</span>
+                    <span class="stat-value" data-target="78">0</span><span class="stat-unit">%</span>
+                    <span class="stat-trend pos">+1.5%</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Avg. ROE</span>
+                    <span class="stat-value" data-target="420">0</span><span class="stat-unit">%</span>
+                    <span class="stat-trend pos">+12%</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Uptime</span>
+                    <span class="stat-value" data-target="99">0</span><span class="stat-unit">.9%</span>
+                    <span class="stat-trend">STABLE</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="chart" class="chart-section reveal">
+        <div class="container">
+            <h2>Market Intelligence</h2>
+            <div class="chart-container">
+                <!-- TradingView Widget BEGIN -->
+                <div class="tradingview-widget-container">
+                    <div id="tradingview_chart"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                    <script type="text/javascript">
+                    new TradingView.widget(
+                    {
+                    "width": "100%",
+                    "height": 500,
+                    "symbol": "BINANCE:BTCUSDT",
+                    "interval": "D",
+                    "timezone": "Etc/UTC",
+                    "theme": "dark",
+                    "style": "1",
+                    "locale": "en",
+                    "toolbar_bg": "#f1f3f6",
+                    "enable_publishing": false,
+                    "hide_side_toolbar": false,
+                    "allow_symbol_change": true,
+                    "container_id": "tradingview_chart"
+                    }
+                    );
+                    </script>
+                </div>
+                <!-- TradingView Widget END -->
+            </div>
+        </div>
+    </section>
+
+    <section id="ticker" class="ticker-section">
+        <div class="ticker-wrapper">
+            <div class="ticker-item"><span class="coin">BTC</span> <span class="price" id="btc-price">--</span> <span class="change" id="btc-change">--</span></div>
+            <div class="ticker-item"><span class="coin">ETH</span> <span class="price" id="eth-price">--</span> <span class="change" id="eth-change">--</span></div>
+            <div class="ticker-item"><span class="coin">SOL</span> <span class="price" id="sol-price">--</span> <span class="change" id="sol-change">--</span></div>
+            <div class="ticker-item"><span class="coin">GHO$T</span> <span class="price">$0.000042</span> <span class="change pos">+12.4%</span></div>
+        </div>
+    </section>
+
+    <main>
+        <section class="overview-section reveal">
+            <div class="container">
+                <h2>The Protocol Ecosystem</h2>
+                <div class="overview-grid">
+                    <a href="about.html" class="overview-card">
+                        <h3>Identity</h3>
+                        <p>Learn about our mission and core methodology.</p>
+                        <span class="arrow">→</span>
+                    </a>
+                    <a href="specs.html" class="overview-card">
+                        <h3>Infrastructure</h3>
+                        <p>Deep dive into our low-latency network and security.</p>
+                        <span class="arrow">→</span>
+                    </a>
+                    <a href="evolution.html" class="overview-card">
+                        <h3>Evolution</h3>
+                        <p>Explore the roadmap towards protocol singularity.</p>
+                        <span class="arrow">→</span>
+                    </a>
+                    <a href="community.html" class="overview-card">
+                        <h3>Network</h3>
+                        <p>Join the community and verify your node status.</p>
+                        <span class="arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="faq-section reveal">
+            <div class="container">
+                <h2>Knowledge Base</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3>How do I access signals?</h3>
+                        <p>All active signals are broadcast via the GHO$T Discord for verified protocol participants.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Is there a cost?</h3>
+                        <p>The GHO$T Protocol operates on a performance-based accumulation model. Entry is restricted by node capacity.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="reveal">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">GHO$T PROTOCOL</div>
+                <div class="footer-links">
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">API Documentation</a>
+                </div>
+            </div>
+            <p class="copyright">&copy; 2026 GHO$T PROTOCOL. All rights reserved. Transmission terminated.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

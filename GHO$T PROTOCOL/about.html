@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | GHO$T PROTOCOL</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="scanline"></div>
+    <div id="scroll-progress"></div>
+
+    <div id="status-bar">
+        <div class="status-info">
+            <span class="pulse-dot"></span> UPLINK: <span id="uplink-id">CONNECTED</span> | LATENCY: <span id="uplink-ms">12ms</span>
+        </div>
+        <div class="status-links">
+            <a href="https://discord.gg/76DrrcEU" target="_blank">DISCORD</a>
+            <a href="https://t.me/GHOSTX_777" target="_blank">TELEGRAM</a>
+        </div>
+    </div>
+
+    <div id="command-center">
+        <div class="cc-menu" id="cc-menu">
+            <div class="cc-header" style="color: var(--accent-color); font-size: 0.6rem; margin-bottom: 0.5rem; letter-spacing: 2px;">SECURE UPLINK</div>
+            <a href="https://discord.gg/76DrrcEU" target="_blank" class="cc-item">
+                Discord <span class="tag">DC</span>
+            </a>
+            <a href="https://t.me/GHOSTX_777" target="_blank" class="cc-item">
+                Telegram <span class="tag">TG</span>
+            </a>
+            <a href="index.html#chart" class="cc-item">
+                Analysis <span class="tag">VIEW</span>
+            </a>
+        </div>
+        <div class="cc-toggle" id="cc-toggle">G</div>
+    </div>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <nav>
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 1.5rem;">
+                <img src="images/logo.png" alt="GHO$T" class="logo-img">
+                <span class="logo-text glitch-small" data-text="GHO$T">GHO$T</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" class="active-nav">About</a></li>
+            <li><a href="specs.html">Specs</a></li>
+            <li><a href="evolution.html">Evolution</a></li>
+            <li><a href="community.html">Community</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero-small">
+        <div class="container">
+            <h1 class="glitch" data-text="THE IDENTITY">THE IDENTITY</h1>
+            <p class="subtitle">Decoding the GHO$T methodology.</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="manifesto-section reveal">
+            <div class="container">
+                <div class="manifesto-grid">
+                    <div class="manifesto-text">
+                        <h2>The Manifesto</h2>
+                        <p class="lead">In a world of noise, we seek the signal. In a market of chaos, we find the pattern.</p>
+                        <p>GHO$T PROTOCOL was born from the need for absolute precision in decentralized markets. We don't follow trends; we analyze the underlying structures of liquidity and sentiment that drive them.</p>
+                        <p>Our mission is to provide the tools and intelligence necessary to navigate the digital void with the stealth and impact of a ghost.</p>
+                    </div>
+                    <div class="manifesto-image">
+                        <div class="glitch-box">
+                            <img src="images/logo.png" alt="GHO$T Identity">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="methodology-section reveal">
+            <div class="container">
+                <h2>The Methodology</h2>
+                <div class="method-grid">
+                    <div class="method-card">
+                        <div class="method-number">01</div>
+                        <h3>Data Ingestion</h3>
+                        <p>Real-time processing of chain-wide transaction data, order book depth, and social sentiment vectors.</p>
+                    </div>
+                    <div class="method-card">
+                        <div class="method-number">02</div>
+                        <h3>Pattern Recognition</h3>
+                        <p>Utilizing proprietary GHO$T algorithms to identify high-probability reversal zones and breakout patterns.</p>
+                    </div>
+                    <div class="method-card">
+                        <div class="method-number">03</div>
+                        <h3>Stealth Execution</h3>
+                        <p>Orders are routed through private nodes to prevent MEV front-running and slippage.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="dna-section reveal">
+            <div class="container">
+                <h2>Protocol DNA</h2>
+                <div class="dna-terminal" id="dna-output">
+                    <!-- JS will populate this with decoding text -->
+                </div>
+            </div>
+        </section>
+
+        <section class="team-section reveal">
+            <div class="container">
+                <h2>The Core Collective</h2>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="team-avatar">G</div>
+                        <h3>0xGHOST</h3>
+                        <p class="role">Lead Architect</p>
+                        <p>Ex-quant dev specializing in low-latency execution and algorithmic trading strategies.</p>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-avatar">V</div>
+                        <h3>VOID_7</h3>
+                        <p class="role">Data Scientist</p>
+                        <p>Machine learning expert focused on sentiment analysis and liquidity flow modeling.</p>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-avatar">N</div>
+                        <h3>NODE_X</h3>
+                        <p class="role">Infra Lead</p>
+                        <p>Managing the global node network and ensuring 99.9% protocol uptime.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="vision-section reveal">
+            <div class="container">
+                <div class="vision-content">
+                    <h2>Strategic Vision</h2>
+                    <p>We are building more than a trading group. We are constructing a decentralized intelligence layer for the new digital economy. Our goal is to democratize high-frequency tools once reserved for elite institutions.</p>
+                    <div class="vision-stats">
+                        <div class="v-stat">
+                            <span class="v-label">Target Liquidity</span>
+                            <span class="v-val">$10B+</span>
+                        </div>
+                        <div class="v-stat">
+                            <span class="v-label">Protocol Reach</span>
+                            <span class="v-val">Global</span>
+                        </div>
+                        <div class="v-stat">
+                            <span class="v-label">Alpha Accuracy</span>
+                            <span class="v-val">92%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">GHO$T PROTOCOL</div>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="specs.html">Specs</a>
+                    <a href="community.html">Community</a>
+                </div>
+            </div>
+            <p class="copyright">&copy; 2026 GHO$T PROTOCOL. All rights reserved. Transmission terminated.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
