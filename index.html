@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GHO$T | Crypto Trader & Community</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="cursor-glow"></div>
+    <canvas id="bg-canvas"></canvas>
+
+    <nav>
+        <div class="logo">
+            <img src="images/logo.png" alt="GHO$T" class="logo-img">
+            <span class="logo-text glitch-small" data-text="GHO$T">GHO$T</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#ticker">Markets</a></li>
+            <li><a href="#community">Community</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="glitch" data-text="GHO$T PROTOCOL">GHO$T PROTOCOL</h1>
+            <p class="subtitle">Navigating the digital void. Trading with precision.</p>
+            <div class="cta-group">
+                <a href="https://discord.gg/76DrrcEU" target="_blank" class="btn primary">Join Community</a>
+                <a href="#ticker" class="btn secondary">View Markets</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="ticker" class="ticker-section">
+        <div class="ticker-wrapper">
+            <div class="ticker-item"><span class="coin">BTC</span> <span class="price" id="btc-price">--</span> <span class="change" id="btc-change">--</span></div>
+            <div class="ticker-item"><span class="coin">ETH</span> <span class="price" id="eth-price">--</span> <span class="change" id="eth-change">--</span></div>
+            <div class="ticker-item"><span class="coin">SOL</span> <span class="price" id="sol-price">--</span> <span class="change" id="sol-change">--</span></div>
+            <div class="ticker-item"><span class="coin">GHO$T</span> <span class="price">$0.000042</span> <span class="change pos">+12.4%</span></div>
+        </div>
+    </section>
+
+    <main>
+        <section id="about" class="reveal">
+            <div class="container">
+                <h2>The Trader</h2>
+                <div class="about-grid">
+                    <div class="about-card">
+                        <h3>Strategy</h3>
+                        <p>High-frequency scalp trades and long-term accumulation of disruptive assets.</p>
+                    </div>
+                    <div class="about-card">
+                        <h3>Execution</h3>
+                        <p>Leveraging proprietary indicators and sentiment analysis to front-run the noise.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="community" class="reveal">
+            <div class="container">
+                <h2>The Community</h2>
+                <div class="social-links">
+                    <a href="https://t.me/GHOSTX_777" target="_blank" class="social-card telegram">
+                        <span class="icon">TG</span>
+                        <h3>Telegram</h3>
+                        <p>Real-time signals & alerts</p>
+                        <span class="btn-mini">Connect</span>
+                    </a>
+                    <a href="https://discord.gg/76DrrcEU" target="_blank" class="social-card discord">
+                        <span class="icon">DC</span>
+                        <h3>Discord</h3>
+                        <p>Weekly strategy calls</p>
+                        <span class="btn-mini">Connect</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 GHO$T PROTOCOL. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
