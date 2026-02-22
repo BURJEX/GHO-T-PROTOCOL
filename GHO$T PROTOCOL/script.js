@@ -323,12 +323,28 @@ if (canvas) {
 // 3. Live Price Ticker
 async function fetchPrices() {
     try {
-        const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana&vs_currencies=usd&include_24hr_change=true');
+        const ids = 'bitcoin,ethereum,binancecoin,solana,ripple,cardano,dogecoin,tron,polkadot,chainlink';
+        const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd&include_24hr_change=true`);
         const data = await response.json();
         
-        updateTickerItem('btc', data.bitcoin.usd, data.bitcoin.usd_24h_change);
-        updateTickerItem('eth', data.ethereum.usd, data.ethereum.usd_24h_change);
-        updateTickerItem('sol', data.solana.usd, data.solana.usd_24h_change);
+        const mappings = {
+            'bitcoin': 'btc',
+            'ethereum': 'eth',
+            'binancecoin': 'bnb',
+            'solana': 'sol',
+            'ripple': 'xrp',
+            'cardano': 'ada',
+            'dogecoin': 'doge',
+            'tron': 'trx',
+            'polkadot': 'dot',
+            'chainlink': 'link'
+        };
+
+        for (const [cgId, tickerId] of Object.entries(mappings)) {
+            if (data[cgId]) {
+                updateTickerItem(tickerId, data[cgId].usd, data[cgId].usd_24h_change);
+            }
+        }
     } catch (error) {
         console.error('Error fetching prices:', error);
     }

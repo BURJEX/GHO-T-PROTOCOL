@@ -338,22 +338,22 @@ nav {
 
 .ticker-wrapper {
     display: flex;
-    white-space: nowrap;
-    animation: ticker 30s linear infinite;
-    gap: 4rem;
+    width: max-content;
+    animation: ticker 20s linear infinite;
 }
 
 @keyframes ticker {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
 .ticker-item {
     font-family: monospace;
     font-size: 1.2rem;
+    padding-right: 4rem; /* Replaces gap for seamless looping */
 }
 
-.coin { color: var(--accent-color); font-weight: bold; }
+.coin { color: #00ff88; font-weight: bold; }
 .price { color: #fff; margin: 0 0.5rem; }
 .change { color: #ff0055; font-size: 0.9rem; }
 .change.pos { color: #00ff88; }
